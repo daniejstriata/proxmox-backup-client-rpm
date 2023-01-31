@@ -3,4 +3,4 @@ outdir ?= target
 .PHONY: srpm
 
 srpm:
-	./srpm.sh "$(outdir)"
+	.copr/srpm.sh "$(outdir)"

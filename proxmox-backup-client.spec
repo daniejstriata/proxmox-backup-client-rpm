@@ -11,7 +11,6 @@ Source1:        elf-strip-unused-dependencies.sh
 Patch0:         0001-re-route-dependencies-not-available-on-crates.io-to-.patch
 Patch1:         0002-docs-drop-all-but-client-man-pages.patch
 
-BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  fuse3-devel
 BuildRequires:  git
@@ -21,7 +20,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  patchelf
 BuildRequires:  python3-docutils
 BuildRequires:  python3-sphinx
-BuildRequires:  rust
 
 Requires:       fuse3-libs
 Requires:       glibc
@@ -37,6 +35,8 @@ Client for Proxmox Backup Server
 %{_sourcedir}/prep.sh
 
 %build
+source "$HOME/.cargo/env"
+
 cd %{_sourcedir}/proxmox-backup
 cargo build --release \
     --package %{name} \
@@ -54,6 +54,8 @@ cd docs
 DEB_VERSION_UPSTREAM="%{version}" DEB_VERSION="${DEB_VERSION_UPSTREAM%.*}" BUILD_MODE=release make %{name}.1 pxar.1
 
 %check
+source "$HOME/.cargo/env"
+
 cd %{_sourcedir}/proxmox-backup
 mkdir -p target/testout/
 cargo test --release \

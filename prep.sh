@@ -9,6 +9,8 @@ source_repos=(
   "git://git.proxmox.com/git/pxar.git"
 )
 
+rust_version=1.67.0
+
 rpmbuild_sources_dir="$(rpm --eval "%{_sourcedir}")"
 
 pushd "${rpmbuild_sources_dir}"
@@ -44,3 +46,6 @@ done
 
 popd
 popd
+
+## Install Rust
+curl -sSf https://sh.rustup.rs | sh -s -- --profile default -y --default-toolchain "${rust_version}"

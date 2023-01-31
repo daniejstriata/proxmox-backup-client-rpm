@@ -1,0 +1,3 @@
+results_proxmox-backup-client/
+target/
+*.rpm

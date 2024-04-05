@@ -3,13 +3,14 @@ set -e
 
 # URL may end with a tag/commits as fragment
 source_repos=(
-  "git://git.proxmox.com/git/proxmox-backup.git#tag=v2.3.1"
-  "git://git.proxmox.com/git/proxmox.git#commit=d513ef78361cbdb505b4e0e6dbf74b1a10ee987e"
+  "git://git.proxmox.com/git/proxmox-backup.git#tag=v3.1.2"
+  "git://git.proxmox.com/git/proxmox.git#commit=50b79198f83659e77b810fe0eedaa79b140744db"
   "git://git.proxmox.com/git/proxmox-fuse.git"
+  "git://git.proxmox.com/git/pathpatterns.git"
   "git://git.proxmox.com/git/pxar.git"
 )
 
-rust_version=1.67.0
+rust_version=1.77.1
 
 rpmbuild_sources_dir="$(rpm --eval "%{_sourcedir}")"
 

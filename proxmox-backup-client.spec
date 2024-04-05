@@ -1,5 +1,5 @@
 Name:           proxmox-backup-client
-Version:        2.3.1
+Version:        3.1.2
 Release:        1%{?dist}
 Summary:        Client for Proxmox Backup Server
 
@@ -93,5 +93,7 @@ install -Dm644 "zsh-completions/_pxar" "%{buildroot}%{_datadir}/zsh/site-functio
 %{_datadir}/zsh/site-functions/_pxar
 
 %changelog
+* Fri Apr 05 2024 DerEnderKeks <derenderkeks@gmail.com>
+- Updated patches and dependencies for 3.1.2
 * Mon Jan 30 2023 DerEnderKeks <derenderkeks@gmail.com>
 - Initial package

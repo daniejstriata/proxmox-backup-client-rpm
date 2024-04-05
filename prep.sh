@@ -40,12 +40,22 @@ pushd proxmox-backup
 # Delete cargo registry overrides (hardcoded for Debian...)
 rm -f .cargo/config
 
-for f in "${rpmbuild_sources_dir}"/*.patch; do
+for f in "${rpmbuild_sources_dir}"/00*.patch; do
   echo "Applying patch ${f}"
   patch --forward --strip=1 --input="${f}"
 done
 
 popd
+
+pushd proxmox-fuse
+
+for f in "${rpmbuild_sources_dir}"/01*.patch; do
+  echo "Applying patch ${f}"
+  patch --forward --strip=1 --input="${f}"
+done
+
+popd
+
 popd
 
 ## Install Rust

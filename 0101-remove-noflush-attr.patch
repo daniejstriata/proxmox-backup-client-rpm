@@ -1,0 +1,25 @@
+Index: src/sys.rs
+<+>UTF-8
+===================================================================
+diff --git a/src/sys.rs b/src/sys.rs
+--- a/src/sys.rs	(revision a802da229d7ddd94c3ea06753e1a45d4a25a03fd)
++++ b/src/sys.rs	(date 1712352841335)
+@@ -291,7 +291,6 @@
+     (nonseekable,   glue_set_ffi_nonseekable,   glue_get_ffi_nonseekable,   set_nonseekable,   get_nonseekable)
+     (flock_release, glue_set_ffi_flock_release, glue_get_ffi_flock_release, set_flock_release, get_flock_release)
+     (cache_readdir, glue_set_ffi_cache_readdir, glue_get_ffi_cache_readdir, set_cache_readdir, get_cache_readdir)
+-    (noflush,       glue_set_ffi_noflush,       glue_get_ffi_noflush,       set_noflush,       get_noflush)
+ }
+ 
+ #[rustfmt::skip]
+Index: src/glue.c
+<+>UTF-8
+===================================================================
+diff --git a/src/glue.c b/src/glue.c
+--- a/src/glue.c	(revision a802da229d7ddd94c3ea06753e1a45d4a25a03fd)
++++ b/src/glue.c	(date 1712352841325)
+@@ -19,4 +19,3 @@
+ MAKE_ACCESSORS(nonseekable)
+ MAKE_ACCESSORS(flock_release)
+ MAKE_ACCESSORS(cache_readdir)
+-MAKE_ACCESSORS(noflush)

@@ -10,6 +10,7 @@ Source0:        prep.sh
 Source1:        elf-strip-unused-dependencies.sh
 Patch0:         0001-re-route-dependencies-not-available-on-crates.io-to-.patch
 Patch1:         0002-docs-drop-all-but-client-man-pages.patch
+Patch2:         0101-remove-noflush-attr.patch
 
 BuildRequires:  clang-devel
 BuildRequires:  fuse3-devel

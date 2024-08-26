@@ -1,0 +1,24 @@
+Index: proxmox-sys/src/crypt.rs
+<+>UTF-8
+===================================================================
+diff --git a/proxmox-sys/src/crypt.rs b/proxmox-sys/src/crypt.rs
+--- a/proxmox-sys/src/crypt.rs	(revision 3129752da96c3839e6a1c2dfc6529f6aee6526f3)
++++ b/proxmox-sys/src/crypt.rs	(date 1724666461069)
+@@ -71,7 +71,7 @@
+         // > output field of their data argument, and crypt writes an invalid hash to its static
+         // > storage area.  This string will be shorter than 13 characters, will begin with a ‘*’,
+         // > and will not compare equal to setting.
+-        if data.output.first().is_none() || Some(&('*' as i8)) == data.output.first() {
++        if data.output.first().is_none() || Some(&('*' as libc::c_char)) == data.output.first() {
+             bail!("internal error: crypt_r returned invalid hash");
+         }
+         CStr::from_ptr(&data.output as *const _)
+@@ -133,7 +133,7 @@
+     // while it states that this is "in addition" to returning a null pointer, this isn't how
+     // `crypt_r` seems to behave (sometimes only setting an invalid hash) so add this here too just
+     // in case.
+-    if output.first().is_none() || Some(&('*' as i8)) == output.first() {
++    if output.first().is_none() || Some(&('*' as libc::c_char)) == output.first() {
+         bail!("internal error: crypt_gensalt_rn could not create a valid salt");
+     }
+ 

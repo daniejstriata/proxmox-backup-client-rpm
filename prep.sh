@@ -36,7 +36,10 @@ for repo in "${source_repos[@]}"; do
 done
 
 ## Apply patches
+
+### proxmox-backup patches
 pushd proxmox-backup
+
 # Delete cargo registry overrides (hardcoded for Debian...)
 rm -f .cargo/config.toml
 
@@ -44,18 +47,27 @@ for f in "${rpmbuild_sources_dir}"/00*.patch; do
   echo "Applying patch ${f}"
   patch --forward --strip=1 --input="${f}"
 done
-
 popd
 
+### proxmox-fuse patches
 pushd proxmox-fuse
 
 for f in "${rpmbuild_sources_dir}"/01*.patch; do
   echo "Applying patch ${f}"
   patch --forward --strip=1 --input="${f}"
 done
-
 popd
 
+### proxmox patches
+pushd proxmox
+
+for f in "${rpmbuild_sources_dir}"/02*.patch; do
+  echo "Applying patch ${f}"
+  patch --forward --strip=1 --input="${f}"
+done
+popd
+
+## End of patches
 popd
 
 ## Install Rust

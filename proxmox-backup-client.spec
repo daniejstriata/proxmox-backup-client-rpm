@@ -1,6 +1,6 @@
 Name:           proxmox-backup-client
 Version:        3.2.7
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Client for Proxmox Backup Server
 
 License:        AGPL-3
@@ -11,6 +11,7 @@ Source1:        elf-strip-unused-dependencies.sh
 Patch0:         0001-re-route-dependencies-not-available-on-crates.io-to-.patch
 Patch1:         0002-docs-drop-all-but-client-man-pages.patch
 Patch2:         0101-remove-noflush-attr.patch
+Patch3:         0201-restore-aarch64-compatibility.patch
 
 BuildRequires:  clang-devel
 BuildRequires:  fuse3-devel
@@ -94,6 +95,8 @@ install -Dm644 "zsh-completions/_pxar" "%{buildroot}%{_datadir}/zsh/site-functio
 %{_datadir}/zsh/site-functions/_pxar
 
 %changelog
+* Mon Aug 26 2024 DerEnderKeks <derenderkeks@gmail.com>
+- Restore aarch64 compatibility
 * Fri Aug 23 2024 DerEnderKeks <derenderkeks@gmail.com>
 - Updated patches and dependencies for 3.2.7
 * Fri Apr 05 2024 DerEnderKeks <derenderkeks@gmail.com>
